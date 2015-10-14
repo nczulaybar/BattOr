@@ -2,6 +2,18 @@
 #define LED_YELLOW_bm (1<<1)
 #define LED_GREEN_bm (1<<0)
 
+struct LED {
+	uint8_t blinkInterval;
+	uint8_t counter;
+	};
+	
+//LED LEDArray[] = {}
+
+struct LED redLED = {
+	.blinkInterval = 100,
+	.counter = 0
+	};
+
 void led_init();
 //Setup all of the LEDs so they are in output mode and off.
 
