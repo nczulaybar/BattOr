@@ -35,6 +35,9 @@ int main(void)
 	//led_on(LED_YELLOW_bm);
 	
 	blink_init();
+	blink_set(LED_RED_bm, 2000);
+	blink_set(LED_GREEN_bm, 4000);
+	blink_set(LED_YELLOW_bm, 6000);
 	
     while (1) 
     {

@@ -20,7 +20,9 @@ void blink_set(uint8_t led, uint16_t interval_ms){
 void blink_ms_timer_update(){
 	for (int i = 0; i < sizeof(LEDArray)/sizeof(LEDArray[0]); ++i) {
 		if (LEDArray[i].blinkInterval != 0) {
-			LEDArray[i].counter += (globalTime - lastTime);
+			if (lastTime < globalTime) {
+				LEDArray[i].counter += (globalTime - lastTime); 
+				}
 			lastTime = globalTime;
 			if (LEDArray[i].counter >= LEDArray[i].blinkInterval) {
 				LEDArray[i].counter = 0;

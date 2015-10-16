@@ -6,8 +6,6 @@ void led_init(){
 	led_off(LED_GREEN_bm);
 	led_off(LED_YELLOW_bm);
 	led_off(LED_RED_bm);
-	
-//void gpio_set_mode(PORT_t* port, uint8_t pin, uint8_t out_or_in);
 }
 
 //Turn on the specified led.
