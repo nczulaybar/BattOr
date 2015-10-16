@@ -2,7 +2,7 @@
 void blink_init(){
 	//Disable blinks
 	timer_init(&TCC0, 0b11);
-	timer_set(&TCC0, 0b001, 1000);
+	timer_set(&TCC0, 0b001, 2000); //2000 ticks corresponds to 1ms, thanks to the 2MHz peripheral clock
 }
 
 ISR(TCC0_OVF_vect){
@@ -13,7 +13,7 @@ ISR(TCC0_OVF_vect){
 
 //Set the specified led to blink at the specified interval_ms.
 void blink_set(uint8_t led, uint16_t interval_ms){
-	LEDArray[led].blinkInterval = interval_ms;
+	LEDArray[(binaryToPosition(led)].blinkInterval = interval_ms;
 }
 
 //Update the state of the LEDs when a timer interrupt has occurred. This is the lower half handler for the timer interrupt, and should only be called if there was an unhandled timer interrupt that has occurred.
@@ -32,4 +32,11 @@ void blink_ms_timer_update(){
 	}
 }
 
-//%redLED.blinkInterval ==
+uint8_t binaryToPosition(uint8_t binary){
+	for(uint8_t pos = 0; pos<8; pos++){
+		binary >> 1;
+		if(binary & 0b1) return pos;
+	}
+
+	return 0;
+}
