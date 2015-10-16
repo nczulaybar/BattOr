@@ -13,14 +13,24 @@ ISR(TCC0_OVF_vect){
 
 //Set the specified led to blink at the specified interval_ms.
 void blink_set(uint8_t led, uint16_t interval_ms){
-	
+	LEDArray[led].blinkInterval = interval_ms;
 }
 
 //Update the state of the LEDs when a timer interrupt has occurred. This is the lower half handler for the timer interrupt, and should only be called if there was an unhandled timer interrupt that has occurred.
 void blink_ms_timer_update(){
-	if (globalTime > 1000) {
+	for (int i = 0; i < LEDArray.size(); ++i) {
+		if (LED[i].blinkInterval != 0) {
+			LED[i].counter += (globalTime - lastTime);
+			lastTime = globalTime;
+			if (LED[i].counter >= LED[i].blinkInterval) {
+				LED[i].counter = 0;
+				led_toggle(i);
+			}
+		}
+	}
+	
+
 		led_toggle(LED_RED_bm);
-		globalTime = 0;
 	}
 }
 
