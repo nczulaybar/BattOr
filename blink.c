@@ -1,4 +1,7 @@
+
 //Initialize the state of all of the LEDs in local state of the blink library to have their blinks disabled. Also, setup a timer that will fire an interrupt once every millisecond. Note that the timer is clocked off of the peripheral clock, and the peripheral clock is clocked off of the system clock.
+
+
 void blink_init(){
 	timer_init(&TCC0, 0b11); //high interrupt level
 	timer_set(&TCC0, 0b1, 2000); //2000 ticks corresponds to 1ms, as of 10/15 10:32pm
@@ -6,18 +9,18 @@ void blink_init(){
 
 ISR(TCC0_OVF_vect){
 	globalTime++;
+	if (globalTime%5 == 0) {
+		checkBlink = 1;
+	}
 }
 
 //Set the specified led to blink at the specified interval_ms.
-void blink_set(uint8_t led, uint16_t interval_ms){
+void blink_set(uint8_t led, uint16_t interval_ms) {
 	LEDArray[led].blinkInterval = interval_ms;
 }
 
 //Update the state of the LEDs when a timer interrupt has occurred. This is the lower half handler for the timer interrupt, and should only be called if there was an unhandled timer interrupt that has occurred.
 void blink_ms_timer_update(){
-	
-	lastTime = globalTime;
-
 	for (int i = 0; i < 3; i++) {
 		if (LEDArray[i].blinkInterval != 0) {
 			if (lastTime < globalTime) {
@@ -29,6 +32,7 @@ void blink_ms_timer_update(){
 			}
 		}
 	}
+	lastTime = globalTime;
 }
 //sizeof(LEDArray)/sizeof(LEDArray[0])
 /*

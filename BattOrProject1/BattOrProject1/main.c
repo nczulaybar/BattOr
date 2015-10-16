@@ -9,7 +9,8 @@
 #include <avr/interrupt.h> //Gives sei function that enables all interrupts
 
 volatile uint32_t globalTime;
-uint32_t lastTime, ledCounter1, ledCounter2, ledCounter3, blinkInt1, blinkInt2, blinkInt3;
+uint32_t lastTime;
+volatile uint8_t checkBlink;
 
 #include "../../gpio.h"
 #include "../../led.h"
@@ -27,13 +28,17 @@ int main(void)
 	
 	led_init();
 	blink_init();
-	blink_set(0, 100);
-	blink_set(1, 250);
-	blink_set(2, 500);
+	blink_set(0, 100/2);
+	blink_set(1, 250/2);
+	blink_set(2, 500/2);
 
     while (1) 
     {
-		blink_ms_timer_update();
+		if(checkBlink == 1) {
+			blink_ms_timer_update();
+			checkBlink = 0;
+		}
+		
     }
 }
 
