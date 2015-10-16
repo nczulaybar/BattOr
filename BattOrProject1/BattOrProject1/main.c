@@ -9,6 +9,7 @@
 #include <avr/interrupt.h> //Gives sei function that enables all interrupts
 
 volatile uint32_t globalTime;
+uint32_t lastTime;
 
 #include "../../gpio.h"
 #include "../../led.h"
