@@ -35,10 +35,10 @@ int main(void)
 	//led_on(LED_YELLOW_bm);
 	
 	blink_init();
-	blink_set(LED_RED_bm, 2000);
-	blink_set(LED_GREEN_bm, 4000);
-	blink_set(LED_YELLOW_bm, 6000);
-	
+	blink_set(0, 100/2);
+	blink_set(1, 250/2);
+	blink_set(2, 500/2);
+
     while (1) 
     {
 		blink_ms_timer_update();
