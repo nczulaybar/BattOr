@@ -3,8 +3,8 @@
 #define LED_GREEN_bm (1<<0)
 
 struct LED {
-	uint8_t blinkInterval;
-	uint8_t counter;
+	uint16_t blinkInterval;
+	uint16_t counter;
 	};
 
 struct LED LEDArray[] = {
