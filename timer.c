@@ -12,7 +12,5 @@ void timer_reset(TC0_t* timer){
 //Takes in period as time in microseconds between every overflow interrupt.
 void timer_set(TC0_t* timer, uint8_t prescaler, uint16_t period){
 	timer->CTRLA = (0b00000111 & prescaler); //Set prescaler by setting lower 3 bits of CLKSel;
-	//timer->PERH = period >> 8; //Sets the period.
-	//timer->PERL = 0b11111111 & period;
 	timer->PER = period;
 }
