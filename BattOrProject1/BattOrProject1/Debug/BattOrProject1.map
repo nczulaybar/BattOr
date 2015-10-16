@@ -8,8 +8,14 @@ c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/..
 Allocating common symbols
 Common symbol       size              file
 
+ledCounter3         0x4               main.o
 globalTime          0x4               main.o
+ledCounter2         0x4               main.o
+blinkInt3           0x4               main.o
 lastTime            0x4               main.o
+blinkInt1           0x4               main.o
+blinkInt2           0x4               main.o
+ledCounter1         0x4               main.o
 
 Discarded input sections
 
@@ -370,14 +376,14 @@ END GROUP
                 0x00000266       0x26 main.o
                 0x00000266                led_toggle
  .text.blink_init
-                0x0000028c       0x1c main.o
+                0x0000028c       0x1a main.o
                 0x0000028c                blink_init
  .text.__vector_14
-                0x000002a8       0x4a main.o
-                0x000002a8                __vector_14
+                0x000002a6       0x4a main.o
+                0x000002a6                __vector_14
  .text.blink_ms_timer_update
-                0x000002f2       0xd8 main.o
-                0x000002f2                blink_ms_timer_update
+                0x000002f0       0xda main.o
+                0x000002f0                blink_ms_timer_update
  .text.main     0x000003ca       0x36 main.o
                 0x000003ca                main
                 0x00000400                . = ALIGN (0x2)
@@ -418,26 +424,32 @@ END GROUP
                 0x00802000                _edata = .
                 0x00802000                PROVIDE (__data_end, .)
 
-.bss            0x00802000       0x14
+.bss            0x00802000       0x2c
                 0x00802000                PROVIDE (__bss_start, .)
  *(.bss)
  *(.bss*)
  .bss.LEDArray  0x00802000        0xc main.o
                 0x00802000                LEDArray
  *(COMMON)
- COMMON         0x0080200c        0x8 main.o
-                0x0080200c                globalTime
-                0x00802010                lastTime
-                0x00802014                PROVIDE (__bss_end, .)
+ COMMON         0x0080200c       0x20 main.o
+                0x0080200c                ledCounter3
+                0x00802010                globalTime
+                0x00802014                ledCounter2
+                0x00802018                blinkInt3
+                0x0080201c                lastTime
+                0x00802020                blinkInt1
+                0x00802024                blinkInt2
+                0x00802028                ledCounter1
+                0x0080202c                PROVIDE (__bss_end, .)
                 0x00000404                __data_load_start = LOADADDR (.data)
                 0x00000404                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x00802014        0x0
-                0x00802014                PROVIDE (__noinit_start, .)
+.noinit         0x0080202c        0x0
+                0x0080202c                PROVIDE (__noinit_start, .)
  *(.noinit*)
-                0x00802014                PROVIDE (__noinit_end, .)
-                0x00802014                _end = .
-                0x00802014                PROVIDE (__heap_start, .)
+                0x0080202c                PROVIDE (__noinit_end, .)
+                0x0080202c                _end = .
+                0x0080202c                PROVIDE (__heap_start, .)
 
 .eeprom         0x00810000        0x0
  *(.eeprom*)
@@ -509,26 +521,26 @@ END GROUP
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0x10fa
+.debug_info     0x00000000     0x1168
  *(.debug_info .gnu.linkonce.wi.*)
- .debug_info    0x00000000     0x10fa main.o
+ .debug_info    0x00000000     0x1168 main.o
 
 .debug_abbrev   0x00000000      0x2a2
  *(.debug_abbrev)
  .debug_abbrev  0x00000000      0x2a2 main.o
 
-.debug_line     0x00000000      0x28d
+.debug_line     0x00000000      0x28c
  *(.debug_line .debug_line.* .debug_line_end)
- .debug_line    0x00000000      0x28d main.o
+ .debug_line    0x00000000      0x28c main.o
 
 .debug_frame    0x00000000      0x134
  *(.debug_frame)
  .debug_frame   0x00000000      0x134 main.o
 
-.debug_str      0x00000000      0x6da
+.debug_str      0x00000000      0x71c
  *(.debug_str)
- .debug_str     0x00000000      0x6da main.o
-                                0x71f (size before relaxing)
+ .debug_str     0x00000000      0x71c main.o
+                                0x761 (size before relaxing)
 
 .debug_loc      0x00000000      0x4c4
  *(.debug_loc)

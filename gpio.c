@@ -11,6 +11,7 @@ inline void gpio_set_out(PORT_t* port, uint8_t pin, uint8_t on_or_off){
 
 //If the specified pin on the specified port is in output mode, toggle the pin’s state (if 1 then 0, if 0 then 1).
 inline void gpio_toggle_out(PORT_t* port, uint8_t pin){
+	//port->OUTSET = pin;
   if(getBit(port->DIR, pin)) {
     port->OUT = setBit(port->OUT, pin, !getBit(port->OUT, pin));
   }

@@ -9,7 +9,7 @@
 #include <avr/interrupt.h> //Gives sei function that enables all interrupts
 
 volatile uint32_t globalTime;
-uint32_t lastTime;
+uint32_t lastTime, ledCounter1, ledCounter2, ledCounter3, blinkInt1, blinkInt2, blinkInt3;
 
 #include "../../gpio.h"
 #include "../../led.h"
@@ -22,22 +22,14 @@ uint32_t lastTime;
 
 int main(void)
 {
-	//SREG = SREG | 0b10000000;
-	sei(); //Enables interrupts
+	sei();
 	PMIC.CTRL = PMIC.CTRL | 0b111;
 	
 	led_init();
-	//PORTC.DIR=0b111111;
-	//PORTC.OUT=0b000000;
-	
-	//led_on(LED_RED_bm);
-	//led_on(LED_GREEN_bm);
-	//led_on(LED_YELLOW_bm);
-	
 	blink_init();
-	blink_set(0, 100/2);
-	blink_set(1, 250/2);
-	blink_set(2, 500/2);
+	blink_set(0, 100);
+	blink_set(1, 250);
+	blink_set(2, 500);
 
     while (1) 
     {
