@@ -2,7 +2,7 @@
  * BattOrProject1.c
  *
  * Created: 10/8/2015 8:14:33 PM
- * Author : nczulaybar
+ * Authors : nczulaybar & smaldonado
  */
 
 #include <avr/io.h>
@@ -12,6 +12,8 @@ volatile uint32_t globalTime;
 volatile uint8_t checkBlink;
 uint32_t lastTime;
 
+
+//We've since learned this is bad form. It'll be improved for future submissions
 #include "../../gpio.h"
 #include "../../led.h"
 #include "../../timer.h"
