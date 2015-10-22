@@ -1,11 +1,11 @@
 #include <stdint.h>
 #include <avr/io.h>
+#include "timer.h"
+#include "led.h"
 
 volatile uint32_t globalTime;
 volatile uint8_t checkBlink;
 uint32_t lastTime;
-
-struct LEDArray[]{};
 
 //Initialize the state of all of the LEDs in local state of the blink library to have their blinks disabled. Also, setup a timer that will fire an interrupt once every millisecond. Note that the timer is clocked off of the peripheral clock, and the peripheral clock is clocked off of the system clock.
 void blink_init(){

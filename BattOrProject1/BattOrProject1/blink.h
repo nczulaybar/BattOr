@@ -1,3 +1,6 @@
+#ifndef BLINK_H
+#define BLINK_H
+
 void blink_init();
 
 //Initialize the state of all of the LEDs in local state of the blink library to have their blinks disabled. Also, setup a timer that will fire an interrupt once every millisecond. Note that the timer is clocked off of the peripheral clock, and the peripheral clock is clocked off of the system clock.
@@ -14,3 +17,5 @@ void blink_ms_timer_update();
 
 uint8_t binaryToPosition(uint8_t binary);
 //Convert a bit position variable (eg. 0b10, 0b100) into a uint8_t reflecting its position (2, 3 for the examples given)
+
+#endif

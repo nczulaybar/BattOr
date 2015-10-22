@@ -1,3 +1,6 @@
+#include <stdint.h>
+#include <avr/io.h>
+
 //Setup the specified timer peripheral. Clear out any timer state and reset all counters. Set it to have the specified interrupt_level.
 void timer_init(TC0_t* timer, uint8_t int_level){
 	timer->CTRLFSET = timer->CTRLFSET | 0b1000; //Executes reset command on CTRLFSet, see p179

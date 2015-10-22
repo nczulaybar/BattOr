@@ -1,3 +1,7 @@
+#include <stdint.h>
+#include "gpio.h"
+#include "led.h"
+
 //Setup all of the LEDs so they are in output mode and off.
 void led_init(){
 	gpio_set_mode(&PORTC, LED_GREEN_bm, 1);
@@ -17,7 +21,6 @@ void led_on(uint8_t led){
 void led_off(uint8_t led){
 	gpio_set_out(&PORTC, led, 1);
 }
-
 
 //Toggle the specified led on and off.
 void led_toggle(uint8_t led){

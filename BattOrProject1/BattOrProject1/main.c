@@ -7,19 +7,18 @@
 
 #include <avr/io.h>
 #include <avr/interrupt.h> //Gives sei function that enables all interrupts
+#include "gpio.h"
+#include "led.h"
+#include "timer.h"
+#include "blink.h"
+/*#include "../../gpio.c"
+#include "../../led.c"
+#include "../../timer.c"
+#include "../../blink.c"*/
 
 volatile uint32_t globalTime;
 volatile uint8_t checkBlink;
 uint32_t lastTime;
-
-#include "../../gpio.h"
-#include "../../led.h"
-#include "../../timer.h"
-#include "../../blink.h"
-#include "../../gpio.c"
-#include "../../led.c"
-#include "../../timer.c"
-#include "../../blink.c"
 
 int main(void)
 {
@@ -28,9 +27,9 @@ int main(void)
 	
 	led_init();
 	blink_init();
-	blink_set(LED_GREEN_bm, 100/2);
-	blink_set(LED_YELLOW_bm, 250/2);
-	blink_set(LED_RED_bm, 500/2);
+	blink_set(LED_GREEN_bm, 100);
+	blink_set(LED_YELLOW_bm, 250);
+	blink_set(LED_RED_bm, 500);
 
     while (1) 
     {

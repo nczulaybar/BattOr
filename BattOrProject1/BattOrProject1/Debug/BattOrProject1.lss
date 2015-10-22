@@ -15,19 +15,19 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY
   5 .debug_aranges 00000080  00000000  00000000  00000574  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_info   00000f7a  00000000  00000000  000005f4  2**0
+  6 .debug_info   00000f7b  00000000  00000000  000005f4  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_abbrev 000002a3  00000000  00000000  0000156e  2**0
+  7 .debug_abbrev 000002a3  00000000  00000000  0000156f  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   00000263  00000000  00000000  00001811  2**0
+  8 .debug_line   00000263  00000000  00000000  00001812  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  00000164  00000000  00000000  00001a74  2**2
+  9 .debug_frame  00000164  00000000  00000000  00001a78  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    000006de  00000000  00000000  00001bd8  2**0
+ 10 .debug_str    000006de  00000000  00000000  00001bdc  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    00000294  00000000  00000000  000022b6  2**0
+ 11 .debug_loc    00000294  00000000  00000000  000022ba  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 00000088  00000000  00000000  0000254a  2**0
+ 12 .debug_ranges 00000088  00000000  00000000  0000254e  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -510,19 +510,19 @@ int main(void)
  40e:	0e 94 14 01 	call	0x228	; 0x228 <led_init>
 	blink_init();
  412:	0e 94 20 01 	call	0x240	; 0x240 <blink_init>
-	blink_set(LED_GREEN_bm, 100/2);
- 416:	62 e3       	ldi	r22, 0x32	; 50
+	blink_set(LED_GREEN_bm, 100);
+ 416:	64 e6       	ldi	r22, 0x64	; 100
  418:	70 e0       	ldi	r23, 0x00	; 0
  41a:	81 e0       	ldi	r24, 0x01	; 1
  41c:	0e 94 7b 01 	call	0x2f6	; 0x2f6 <blink_set>
-	blink_set(LED_YELLOW_bm, 250/2);
- 420:	6d e7       	ldi	r22, 0x7D	; 125
+	blink_set(LED_YELLOW_bm, 250);
+ 420:	6a ef       	ldi	r22, 0xFA	; 250
  422:	70 e0       	ldi	r23, 0x00	; 0
  424:	82 e0       	ldi	r24, 0x02	; 2
  426:	0e 94 7b 01 	call	0x2f6	; 0x2f6 <blink_set>
-	blink_set(LED_RED_bm, 500/2);
- 42a:	6a ef       	ldi	r22, 0xFA	; 250
- 42c:	70 e0       	ldi	r23, 0x00	; 0
+	blink_set(LED_RED_bm, 500);
+ 42a:	64 ef       	ldi	r22, 0xF4	; 244
+ 42c:	71 e0       	ldi	r23, 0x01	; 1
  42e:	84 e0       	ldi	r24, 0x04	; 4
  430:	0e 94 7b 01 	call	0x2f6	; 0x2f6 <blink_set>
 

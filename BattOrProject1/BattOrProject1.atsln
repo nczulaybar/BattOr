@@ -5,6 +5,19 @@ VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "BattOrProject1", "BattOrProject1\BattOrProject1.cproj", "{DCE6C7E3-EE26-4D79-826B-08594B9AD897}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F64DFB4D-BF76-4A38-A9EE-E907777F4B78}"
+	ProjectSection(SolutionItems) = preProject
+		BattOrProject1\blink.c = BattOrProject1\blink.c
+		BattOrProject1\blink.h = BattOrProject1\blink.h
+		BattOrProject1\gpio.c = BattOrProject1\gpio.c
+		BattOrProject1\gpio.h = BattOrProject1\gpio.h
+		BattOrProject1\led.c = BattOrProject1\led.c
+		BattOrProject1\led.h = BattOrProject1\led.h
+		BattOrProject1\main.c = BattOrProject1\main.c
+		BattOrProject1\timer.c = BattOrProject1\timer.c
+		BattOrProject1\timer.h = BattOrProject1\timer.h
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|AVR = Debug|AVR

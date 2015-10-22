@@ -37,7 +37,11 @@ SUBDIRS :=
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS +=  \
-../main.c
+../blink.c \
+../gpio.c \
+../led.c \
+../main.c \
+../timer.c
 
 
 PREPROCESSING_SRCS += 
@@ -47,16 +51,32 @@ ASM_SRCS +=
 
 
 OBJS +=  \
-main.o
+blink.o \
+gpio.o \
+led.o \
+main.o \
+timer.o
 
 OBJS_AS_ARGS +=  \
-main.o
+blink.o \
+gpio.o \
+led.o \
+main.o \
+timer.o
 
 C_DEPS +=  \
-main.d
+blink.d \
+gpio.d \
+led.d \
+main.d \
+timer.d
 
 C_DEPS_AS_ARGS +=  \
-main.d
+blink.d \
+gpio.d \
+led.d \
+main.d \
+timer.d
 
 OUTPUT_FILE_PATH +=BattOrProject1.elf
 
@@ -72,6 +92,14 @@ LINKER_SCRIPT_DEP+=
 
 
 # AVR32/GNU C Compiler
+
+
+
+
+
+
+
+
 
 
 
