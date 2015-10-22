@@ -2,6 +2,19 @@
 #include "gpio.h"
 #include "led.h"
 
+struct LED LEDArray[] = {
+	{
+		.blinkInterval = 0,
+		.counter = 0
+		},{
+		.blinkInterval = 0,
+		.counter = 0
+		},{
+		.blinkInterval = 0,
+		.counter = 0
+	}
+};
+
 //Setup all of the LEDs so they are in output mode and off.
 void led_init(){
 	gpio_set_mode(&PORTC, LED_GREEN_bm, 1);
