@@ -11,12 +11,14 @@
 #include "led.h"
 #include "timer.h"
 #include "blink.h"
+#include "clock.h"
 /*#include "../../gpio.c"
 #include "../../led.c"
 #include "../../timer.c"
 #include "../../blink.c"*/
 
 volatile uint32_t globalTime;
+
 volatile uint8_t checkBlink;
 uint32_t lastTime;
 
@@ -31,6 +33,8 @@ int main(void)
 	blink_set(LED_YELLOW_bm, 250);
 	blink_set(LED_RED_bm, 500);
 
+	clock_switch_to_ext_crystal();
+	
     while (1)
     {
 		if(checkBlink == 1) {

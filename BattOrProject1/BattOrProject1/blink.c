@@ -2,10 +2,13 @@
 #include <avr/io.h>
 #include "timer.h"
 #include "led.h"
+#include "gpio.h"
+#include <avr/interrupt.h>
 
 volatile uint32_t globalTime;
 volatile uint8_t checkBlink;
 uint32_t lastTime;
+volatile uint8_t fivemscounter;
 
 //Initialize the state of all of the LEDs in local state of the blink library to have their blinks disabled. Also, setup a timer that will fire an interrupt once every millisecond. Note that the timer is clocked off of the peripheral clock, and the peripheral clock is clocked off of the system clock.
 void blink_init(){
@@ -15,10 +18,13 @@ void blink_init(){
 
 ISR(TCC0_OVF_vect){
 	globalTime++;
-	if (globalTime%5 == 0) {
+	//fivemscounter++;
+	if (/*fivemscounter >= 5*/
+	globalTime%5==0
+	) {
 		checkBlink = 1;
+		//fivemscounter = 0;
 	}
-	return 0;
 }
 
 //Set the specified led to blink at the specified interval_ms.

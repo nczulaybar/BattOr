@@ -4,6 +4,8 @@
 
 blink.c
 
+clock.c
+
 gpio.c
 
 led.c

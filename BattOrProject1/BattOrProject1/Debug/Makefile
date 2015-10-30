@@ -38,6 +38,7 @@ SUBDIRS :=
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS +=  \
 ../blink.c \
+../clock.c \
 ../gpio.c \
 ../led.c \
 ../main.c \
@@ -52,6 +53,7 @@ ASM_SRCS +=
 
 OBJS +=  \
 blink.o \
+clock.o \
 gpio.o \
 led.o \
 main.o \
@@ -59,6 +61,7 @@ timer.o
 
 OBJS_AS_ARGS +=  \
 blink.o \
+clock.o \
 gpio.o \
 led.o \
 main.o \
@@ -66,6 +69,7 @@ timer.o
 
 C_DEPS +=  \
 blink.d \
+clock.d \
 gpio.d \
 led.d \
 main.d \
@@ -73,6 +77,7 @@ timer.d
 
 C_DEPS_AS_ARGS +=  \
 blink.d \
+clock.d \
 gpio.d \
 led.d \
 main.d \
@@ -92,6 +97,8 @@ LINKER_SCRIPT_DEP+=
 
 
 # AVR32/GNU C Compiler
+
+
 
 
 

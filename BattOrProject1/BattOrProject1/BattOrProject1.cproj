@@ -143,6 +143,9 @@
     <Compile Include="blink.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="clock.c">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="gpio.c">
       <SubType>compile</SubType>
     </Compile>

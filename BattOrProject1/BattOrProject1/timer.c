@@ -1,5 +1,6 @@
 #include <stdint.h>
 #include <avr/io.h>
+#include "gpio.h"
 
 //Setup the specified timer peripheral. Clear out any timer state and reset all counters. Set it to have the specified interrupt_level.
 void timer_init(TC0_t* timer, uint8_t int_level){
