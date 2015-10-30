@@ -12,10 +12,6 @@
 #include "timer.h"
 #include "blink.h"
 #include "clock.h"
-/*#include "../../gpio.c"
-#include "../../led.c"
-#include "../../timer.c"
-#include "../../blink.c"*/
 
 volatile uint32_t globalTime;
 
