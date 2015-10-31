@@ -1,3 +1,5 @@
+#ifndef STDINOUT_H
+#define STDINOUT_H
 //Initialize the UART bus, then create a new file stream based off of the wrapper
 //UART functions uart_putchar()and uart_getchar()
 void stdinout_init();
@@ -7,3 +9,5 @@ int uart_putchar(char c, FILE* stream);
 
 //Receive the character c from the UART. Ignore the stream parameter as this function only works with one UART device. This function should return the character on success, -1 on failure.
 int uart_getchar(FILE* stream);
+
+#endif
