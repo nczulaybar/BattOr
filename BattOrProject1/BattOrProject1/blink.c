@@ -18,13 +18,7 @@ void blink_init(){
 
 ISR(TCC0_OVF_vect){
 	globalTime++;
-	//fivemscounter++;
-	if (/*fivemscounter >= 5*/
-	globalTime%5==0
-	) {
-		checkBlink = 1;
-		//fivemscounter = 0;
-	}
+	checkBlink ++;
 }
 
 //Set the specified led to blink at the specified interval_ms.

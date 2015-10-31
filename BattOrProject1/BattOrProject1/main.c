@@ -12,6 +12,8 @@
 #include "timer.h"
 #include "blink.h"
 #include "clock.h"
+#include "stdinout.h"
+#include "uart.h"
 
 volatile uint32_t globalTime;
 
@@ -22,22 +24,28 @@ int main(void)
 {
 	sei();
 	PMIC.CTRL = PMIC.CTRL | 0b111;
-
+	
+	
 	led_init();
 	blink_init();
+	
 	blink_set(LED_GREEN_bm, 100);
 	blink_set(LED_YELLOW_bm, 250);
 	blink_set(LED_RED_bm, 500);
-
+	
 	clock_switch_to_ext_crystal();
+	
+	uart_init();
+	stdinout_init();
 	
     while (1)
     {
-		if(checkBlink == 1) {
+		printf("hullo");
+		
+		if(checkBlink >= 5) {
 			blink_ms_timer_update();
 			checkBlink = 0;
 		}
-
     }
 	//return 0;
 }

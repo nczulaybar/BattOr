@@ -42,7 +42,9 @@ C_SRCS +=  \
 ../gpio.c \
 ../led.c \
 ../main.c \
-../timer.c
+../stdinout.c \
+../timer.c \
+../uart.c
 
 
 PREPROCESSING_SRCS += 
@@ -57,7 +59,9 @@ clock.o \
 gpio.o \
 led.o \
 main.o \
-timer.o
+stdinout.o \
+timer.o \
+uart.o
 
 OBJS_AS_ARGS +=  \
 blink.o \
@@ -65,7 +69,9 @@ clock.o \
 gpio.o \
 led.o \
 main.o \
-timer.o
+stdinout.o \
+timer.o \
+uart.o
 
 C_DEPS +=  \
 blink.d \
@@ -73,7 +79,9 @@ clock.d \
 gpio.d \
 led.d \
 main.d \
-timer.d
+stdinout.d \
+timer.d \
+uart.d
 
 C_DEPS_AS_ARGS +=  \
 blink.d \
@@ -81,7 +89,9 @@ clock.d \
 gpio.d \
 led.d \
 main.d \
-timer.d
+stdinout.d \
+timer.d \
+uart.d
 
 OUTPUT_FILE_PATH +=BattOrProject1.elf
 
@@ -97,6 +107,10 @@ LINKER_SCRIPT_DEP+=
 
 
 # AVR32/GNU C Compiler
+
+
+
+
 
 
 
