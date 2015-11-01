@@ -8,7 +8,8 @@ int uart_putchar(char c, FILE* stream){
 }
 
 int uart_getchar(FILE* stream){
-	return uart_rx_byte();
+	char c = uart_rx_byte();
+	return (c == '\r') ? '\n' : c;
 }
 
 void stdinout_init(){

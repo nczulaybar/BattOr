@@ -146,6 +146,12 @@
     <Compile Include="clock.c">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="digipot.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="digipot.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="gpio.c">
       <SubType>compile</SubType>
     </Compile>
@@ -159,6 +165,12 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="main.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="spi.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="spi.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="stdinout.c">

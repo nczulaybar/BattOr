@@ -6,11 +6,15 @@ blink.c
 
 clock.c
 
+digipot.c
+
 gpio.c
 
 led.c
 
 main.c
+
+spi.c
 
 stdinout.c
 

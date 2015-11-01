@@ -7,6 +7,7 @@
 
 #include <avr/io.h>
 #include <avr/interrupt.h> //Gives sei function that enables all interrupts
+#include <stdlib.h>
 #include "gpio.h"
 #include "led.h"
 #include "timer.h"
@@ -14,6 +15,8 @@
 #include "clock.h"
 #include "stdinout.h"
 #include "uart.h"
+#include "digipot.h"
+#include "spi.h"
 
 volatile uint32_t globalTime;
 
@@ -37,10 +40,22 @@ int main(void)
 	
 	uart_init();
 	stdinout_init();
+	digipot_init();
+	pot_wiperpos_set(DIGIPOT_AMP_CS_PIN_gm, 1023);
 	
-    while (1)
+	while (1)
     {
-		printf("hullo");
+		
+		//pot_wiperpos_get(DIGIPOT_AMP_CS_PIN_gm);
+		printf("Enter your desired resistance in Ohms... \n");
+		char* responseString;
+		gets(responseString);
+		long desiredResistance = strtol(responseString, NULL, 10);
+		printf("\t You requested %ld ohms.\n",desiredResistance);
+		uint16_t toSend = ((desiredResistance*1024)/100000)-1;
+		printf("\t The best I can give is %ld. But at least you're not a processor reduced to a paltry resistor. \n", (97656 * (toSend+1) / 1000));
+		pot_wiperpos_set(DIGIPOT_AMP_CS_PIN_gm, toSend);
+		
 		
 		if(checkBlink >= 5) {
 			blink_ms_timer_update();

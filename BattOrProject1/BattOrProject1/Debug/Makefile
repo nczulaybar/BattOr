@@ -39,9 +39,11 @@ SUBDIRS :=
 C_SRCS +=  \
 ../blink.c \
 ../clock.c \
+../digipot.c \
 ../gpio.c \
 ../led.c \
 ../main.c \
+../spi.c \
 ../stdinout.c \
 ../timer.c \
 ../uart.c
@@ -56,9 +58,11 @@ ASM_SRCS +=
 OBJS +=  \
 blink.o \
 clock.o \
+digipot.o \
 gpio.o \
 led.o \
 main.o \
+spi.o \
 stdinout.o \
 timer.o \
 uart.o
@@ -66,9 +70,11 @@ uart.o
 OBJS_AS_ARGS +=  \
 blink.o \
 clock.o \
+digipot.o \
 gpio.o \
 led.o \
 main.o \
+spi.o \
 stdinout.o \
 timer.o \
 uart.o
@@ -76,9 +82,11 @@ uart.o
 C_DEPS +=  \
 blink.d \
 clock.d \
+digipot.d \
 gpio.d \
 led.d \
 main.d \
+spi.d \
 stdinout.d \
 timer.d \
 uart.d
@@ -86,9 +94,11 @@ uart.d
 C_DEPS_AS_ARGS +=  \
 blink.d \
 clock.d \
+digipot.d \
 gpio.d \
 led.d \
 main.d \
+spi.d \
 stdinout.d \
 timer.d \
 uart.d
@@ -107,6 +117,10 @@ LINKER_SCRIPT_DEP+=
 
 
 # AVR32/GNU C Compiler
+
+
+
+
 
 
 
