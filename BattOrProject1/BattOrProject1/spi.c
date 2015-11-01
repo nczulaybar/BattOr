@@ -32,8 +32,3 @@ void spi_txrx(SPI_t* spi, void* txd, void* rxd, uint16_t len){
 
 }
 
-/* These might just need to be done for setup
-	spi->CTRL = spi->CTRL | 1<<6; //Enable register
-	spi->CTRL = spi->CTRL | 1<<4; //Turn to master mode
-	spi->CTRL
-	*/

@@ -16,7 +16,6 @@ void clock_switch_to_ext_crystal(){
 	CPU_CCP = CCP_IOREG_gc;
 	CLK.CTRL = 0b11; //Changes multiplexer to set source to external oscillator
 	
-	
 }
 /* Start the clock
 Wait for it to stabilize

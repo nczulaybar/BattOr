@@ -19,7 +19,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		BattOrProject1\led.h = BattOrProject1\led.h
 		BattOrProject1\main.c = BattOrProject1\main.c
 		BattOrProject1\spi.c = BattOrProject1\spi.c
-		spi.h = spi.h
 		BattOrProject1\spi.h = BattOrProject1\spi.h
 		BattOrProject1\stdinout.C = BattOrProject1\stdinout.C
 		BattOrProject1\stdinout.h = BattOrProject1\stdinout.h
