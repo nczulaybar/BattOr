@@ -7,9 +7,7 @@ volatile uint16_t current;
 volatile uint16_t voltage;
 
 inline void adc_start_sample(){
-
-	ADCB_CH0_CTRL |= 0b10000000; //Starts scan
-	ADCB_CH1_CTRL |= 0b10000000; //May not need this because scan is enabled
+	ADCB.CTRLA |= 0b1100;
 }
 
 #endif

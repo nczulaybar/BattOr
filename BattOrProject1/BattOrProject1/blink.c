@@ -22,18 +22,16 @@ void blink_init(){
 
 ISR(TCC0_OVF_vect){//Upper Half
 	globalTime++;
-	checkBlink ++;
+	checkBlink++;
+	timerFlag = 0b1; //Enables light updating and sampling
 	adc_start_sample();
-	timerFlag = 0b1;
-	// check to see if the lower half did not have time to complete printing the last sample. 
-	/*while(finishedPrinting == 0){
+	//check to see if the lower half did not have time to complete printing the last sample. 
+	while(finishedPrinting == 0){
 		led_on(LED_RED_bm);
 	}
-	*/
-	finishedPrinting = 0;
 	
-	// If so, the system should switch on the red light and go into an infinite loop of nothingness.
-	
+	finishedPrinting = 0b0;
+
 }
 
 //Set the specified led to blink at the specified interval_ms.

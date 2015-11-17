@@ -22,36 +22,39 @@
 
 volatile uint32_t globalTime;
 uint32_t lastTime;
+volatile uint8_t finishedPrinting;
 
 int main(void)
 {
+	finishedPrinting = 0b1;	
 	
-	sei();
-	PMIC.CTRL = PMIC.CTRL | 0b111;
-
+	
 	led_init();
 	blink_init();	
-	
 	clock_switch_to_ext_crystal();
 	uart_init();
 	stdinout_init();
 	digipot_init();
 	adc_init();
-	blink_set(LED_GREEN_bm, 200);
-	blink_set(LED_YELLOW_bm, 200);
 	
 	setupAmplifier();
-	
 	setupAntiAliasingFilter();
+
 	
-	//Main Loop
-	
+	sei();
+	PMIC.CTRL = PMIC.CTRL | 0b111;
+
+	blink_set(LED_YELLOW_bm, 200);
+	calibrate();
 	blink_set(LED_YELLOW_bm, 0);
-	blink_set(LED_GREEN_bm, 200);	
+	led_off(LED_YELLOW_bm);
+
+	blink_set(LED_GREEN_bm, 200);
+	
 	while (1) {	
 		blinkAndSample();
+		//printf("here");
     }
-	//return 0;
 	
-	while(1){};
+	//return 0
 }

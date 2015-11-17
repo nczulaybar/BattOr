@@ -31,11 +31,11 @@ void digipot_init(){
 	
 	//Set miso to input again
 	gpio_set_mode(&PORTC, 0b01000000, 0); 
-	
 	//Enable pullup resistor on MISO
 	PORTC.PIN6CTRL |= 0b011000;
 	
 	pot_high_impedance_sdo(DIGIPOT_AMP_CS_PIN_gm);
+	pot_high_impedance_sdo(DIGIPOT_FIL_CS_PIN_gm);
 	
 	//Write enable, AMPOT
 	gpio_set_out(&PORTC, DIGIPOT_AMP_CS_PIN_gm, 0);
@@ -71,23 +71,18 @@ static void pot_high_impedance_sdo(uint8_t pot_cs_pin){
 //Read the wiper position (0 - 1023) of the potentiometer which has its CS pin connected to pot_cs_pin.
 uint16_t pot_wiperpos_get(uint8_t pot_cs_pin){
 	gpio_set_out(&PORTC, pot_cs_pin, 0); //Pull down CS
-
 	uint16_t returnable = -1;
 	uint16_t command = 0b00100000000000;
 	//uint16_t command = 0x2000;
 	spi_txrx(&SPIC, &command, NULL, 2);
-
 	gpio_set_out(&PORTC, pot_cs_pin, 1); //Pull up CS
-
 	uint16_t zeroes = 0b0000000000000000;
-	
 	gpio_set_out(&PORTC, pot_cs_pin, 0); //Pull down CS
 	spi_txrx(&SPIC, &zeroes, &returnable, 2);
 	gpio_set_out(&PORTC, pot_cs_pin, 1); //Pull up CS
 	
-	pot_high_impedance_sdo(pot_cs_pin); //Make it happen
+	pot_high_impedance_sdo(pot_cs_pin); 
 	
-	//printf("returnable: %d \n\r", returnable);
 	return returnable;
 }
 
