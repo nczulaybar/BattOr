@@ -18,26 +18,30 @@
 #include "digipot.h"
 #include "spi.h"
 #include "samplepower.h"
+#include "adc.h"
 
 volatile uint32_t globalTime;
 uint32_t lastTime;
 
 int main(void)
 {
+	
 	sei();
 	PMIC.CTRL = PMIC.CTRL | 0b111;
 
 	led_init();
 	blink_init();	
+	
 	clock_switch_to_ext_crystal();
 	uart_init();
 	stdinout_init();
 	digipot_init();
 	adc_init();
-	
+	blink_set(LED_GREEN_bm, 200);
 	blink_set(LED_YELLOW_bm, 200);
 	
 	setupAmplifier();
+	
 	setupAntiAliasingFilter();
 	
 	//Main Loop
@@ -48,4 +52,6 @@ int main(void)
 		blinkAndSample();
     }
 	//return 0;
+	
+	while(1){};
 }

@@ -17,6 +17,7 @@
 #include "uart.h"
 #include "digipot.h"
 #include "spi.h"
+#include "adc.h"
 #include "samplepower.h"
 
 volatile uint8_t checkBlink;

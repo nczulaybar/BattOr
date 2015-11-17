@@ -1,4 +1,5 @@
 #include <avr/io.h>
+#include "led.h"
 
 void adc_init(){
 	//Select the external reference voltage connected to PORTA. 
@@ -22,7 +23,7 @@ void adc_init(){
 	ADCB_CH1_MUXCTRL |= 0b101; //Pad ground
 
 	//Set scan to include channels 0 and 1
-	ADCB_CH0_SCAN |= 0b1; //Set count to 1
+	//ADCB_CH0_SCAN |= 0b1; //Set count to 1
 	
 	//Idk what to do about 
 	//"Don’t forget to wait until the end of the scan." ??

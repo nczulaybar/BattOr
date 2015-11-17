@@ -26,9 +26,10 @@ ISR(TCC0_OVF_vect){//Upper Half
 	adc_start_sample();
 	timerFlag = 0b1;
 	// check to see if the lower half did not have time to complete printing the last sample. 
-	while(finishedPrinting == 0){
+	/*while(finishedPrinting == 0){
 		led_on(LED_RED_bm);
 	}
+	*/
 	finishedPrinting = 0;
 	
 	// If so, the system should switch on the red light and go into an infinite loop of nothingness.
