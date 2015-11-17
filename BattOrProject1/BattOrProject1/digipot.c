@@ -46,7 +46,7 @@ void digipot_init(){
 	
 	//Write enable, FILPOT
 	gpio_set_out(&PORTC, DIGIPOT_FIL_CS_PIN_gm, 0);
-	uint16_t writeEnable =  0b0001110000000010;
+	writeEnable =  0b0001110000000010;
 	spi_txrx(&SPIC, &writeEnable, NULL, 2);
 	gpio_set_out(&PORTC, DIGIPOT_FIL_CS_PIN_gm, 1);
 	pot_high_impedance_sdo(DIGIPOT_FIL_CS_PIN_gm);

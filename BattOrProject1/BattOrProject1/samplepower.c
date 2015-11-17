@@ -53,7 +53,14 @@ void setupAntiAliasingFilter(){
 }
 
 void calibrate(){
-	//Set voltage and current inputs to gnd
+	
+	//For current, set Muxctrl mode to ouput, then set output low
+	gpio_set_mode(&PORTD, 0b0, 1);
+	gpio_set_out(&PORTD, 0b0, 0);
+
+	//Set voltage input to Pin7 GND
+	ADCB_CH1_MUXCTRL |= 0b111000; //Set voltage input to gnd
+
 	
 	printf("===BEGIN CALIBRATION===");
 	while(numSamples < 1000){
@@ -61,7 +68,12 @@ void calibrate(){
 	}
 	printf("===END CALIBRATION===");
 	
-	//Set back voltage and current inputs
+	//For current, set muxctrl input high
+	gpio_set_out(&PORTD, 0b0, 1);
+	
+	//Return voltage and current back to where they were before
+	ADCB_CH0_MUXCTRL |= 0b10000; //Pin 1 is current
+	ADCB_CH1_MUXCTRL |= 0b10000; //Pin 2 is voltage
 }
 
 void blinkAndSample(){
@@ -74,7 +86,7 @@ void blinkAndSample(){
 		//Print raw samples over usartRINT
 		current = ADCB_CH0_RES;
 		voltage = ADCB_CH1_RES;
-		printf("text %ld %ld \n",current, voltage);
+		printf("text %d %d \n",current, voltage);
 		//printf(" ");
 		//printf(voltage);
 		//printf("\n");

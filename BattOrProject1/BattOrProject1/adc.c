@@ -1,8 +1,6 @@
 #include <avr/io.h>
 
 void adc_init(){
-	//Set the ADC to have a a bit depth of the ADC to 12-bits
-	
 	//Select the external reference voltage connected to PORTA. 
 	ADCB.REFCTRL |= 0b0100000;
 	
@@ -13,10 +11,6 @@ void adc_init(){
 	
 	//Divide down the ADC’s clock rate so it is below the 2 MHz maximum clock rate of the ADC.
 	ADCB.PRESCALER = 0b1; //Division by 8 to go from 16MHz to 2MHz
-	
-	//Set channels 0 and 1 on sweep
-	//ADCB.EVCTRL |= 0b01000000;
-	//May not need this, since this is event-triggered
 	
 	//Configure voltage and current ADC channel.
 	ADCB_CH0_CTRL = 0b01; //Sets to differential, no gain

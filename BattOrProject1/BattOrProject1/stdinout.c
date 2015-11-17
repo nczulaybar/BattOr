@@ -1,13 +1,13 @@
 #include "uart.h"
 #include <stdio.h>
 
-int uart_putchar(char c, FILE* stream){
+int uart_putchar(char c, FILE* stream) {
 	uart_tx_byte(c);
 	if(c == '\n') uart_tx_byte('\r');
 	return 0;
 }
 
-int uart_getchar(FILE* stream){
+int uart_getchar(FILE* stream) {
 	char c = uart_rx_byte();
 	return (c == '\r') ? '\n' : c;
 }
