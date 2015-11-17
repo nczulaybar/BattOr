@@ -3,22 +3,36 @@
 #include "timer.h"
 #include "led.h"
 #include "gpio.h"
+#include "adc.h"
 #include <avr/interrupt.h>
 
 volatile uint32_t globalTime;
 volatile uint8_t checkBlink;
 uint32_t lastTime;
 volatile uint8_t fivemscounter;
+volatile uint8_t finishedPrinting;
+volatile uint8_t timerFlag;
+
 
 //Initialize the state of all of the LEDs in local state of the blink library to have their blinks disabled. Also, setup a timer that will fire an interrupt once every millisecond. Note that the timer is clocked off of the peripheral clock, and the peripheral clock is clocked off of the system clock.
 void blink_init(){
 	timer_init(&TCC0, 0b11); //high interrupt level
-	timer_set(&TCC0, 0b1, 2000); //2000 ticks corresponds to 1ms, as of 10/15 10:32pm
+	timer_set(&TCC0, 0b1, 16000); //16000 ticks corresponds to 1ms, with the new clock
 }
 
-ISR(TCC0_OVF_vect){
+ISR(TCC0_OVF_vect){//Upper Half
 	globalTime++;
 	checkBlink ++;
+	adc_start_sample();
+	timerFlag = 0b1;
+	// check to see if the lower half did not have time to complete printing the last sample. 
+	while(finishedPrinting == 0){
+		led_on(LED_RED_bm);
+	}
+	finishedPrinting = 0;
+	
+	// If so, the system should switch on the red light and go into an infinite loop of nothingness.
+	
 }
 
 //Set the specified led to blink at the specified interval_ms.

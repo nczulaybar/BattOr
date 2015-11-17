@@ -37,12 +37,14 @@ SUBDIRS :=
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS +=  \
+../adc.c \
 ../blink.c \
 ../clock.c \
 ../digipot.c \
 ../gpio.c \
 ../led.c \
 ../main.c \
+../samplepower.c \
 ../spi.c \
 ../stdinout.c \
 ../timer.c \
@@ -56,48 +58,56 @@ ASM_SRCS +=
 
 
 OBJS +=  \
+adc.o \
 blink.o \
 clock.o \
 digipot.o \
 gpio.o \
 led.o \
 main.o \
+samplepower.o \
 spi.o \
 stdinout.o \
 timer.o \
 uart.o
 
 OBJS_AS_ARGS +=  \
+adc.o \
 blink.o \
 clock.o \
 digipot.o \
 gpio.o \
 led.o \
 main.o \
+samplepower.o \
 spi.o \
 stdinout.o \
 timer.o \
 uart.o
 
 C_DEPS +=  \
+adc.d \
 blink.d \
 clock.d \
 digipot.d \
 gpio.d \
 led.d \
 main.d \
+samplepower.d \
 spi.d \
 stdinout.d \
 timer.d \
 uart.d
 
 C_DEPS_AS_ARGS +=  \
+adc.d \
 blink.d \
 clock.d \
 digipot.d \
 gpio.d \
 led.d \
 main.d \
+samplepower.d \
 spi.d \
 stdinout.d \
 timer.d \
@@ -117,6 +127,10 @@ LINKER_SCRIPT_DEP+=
 
 
 # AVR32/GNU C Compiler
+
+
+
+
 
 
 

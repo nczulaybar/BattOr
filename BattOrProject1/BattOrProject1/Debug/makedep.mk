@@ -2,6 +2,8 @@
 # Automatically-generated file. Do not edit or delete the file
 ################################################################################
 
+adc.c
+
 blink.c
 
 clock.c
@@ -13,6 +15,8 @@ gpio.c
 led.c
 
 main.c
+
+samplepower.c
 
 spi.c
 
